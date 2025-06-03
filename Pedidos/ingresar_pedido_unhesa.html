@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agregar Pedido</title>
+    <link href="../inventarios_php/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../inventarios_php/assets/img/favicon.png" />
+
+    <!-- Custom fonts for this template-->
+    <link href="../inventarios_php/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../inventarios_php/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" class="overflow-auto">
+
+        <!-- Sidebar -->
+        <ul id="accordionSidebar" class="">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+                <div class="sidebar-brand-icon ">
+                    <i class="fas fa-cocktail"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Pedidos </div>
+                <!-- titulo-->
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Inicia Menu lateral  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Control Empresarial
+            </div>
+
+            <!-- Control Empresarial -->
+
+            <!-- Nav Item - Pedidos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos</span>
+                </a>
+
+                <div id="OpcionesPedidos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Pedido_busqueda.php"> <i
+                                class="fas fa-stream"></i>&nbsp Buscar</a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/seleccionar_cliente.html"> <i
+                                class="fas fa-plus"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Recibos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesRecibos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Recibos</span>
+                </a>
+
+                <div id="OpcionesRecibos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../inventarios_php/ver_lista_recibos.html"><i
+                                class="fas fa-stream"></i>&nbsp Buscar</a>
+                        <a class="collapse-item" href="../inventarios_php/recibos.html">
+                            <i class="fas fa-receipt"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Pedidos Online -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidoOnline"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos Online</span>
+                </a>
+
+                <div id="OpcionesPedidoOnline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="./buscar_pedido_online.html"><i class="fas fa-stream"></i>&nbsp
+                            Buscar</a>
+                        <a class="collapse-item" href="./agregar_pedido_online.html">
+                            <i class="fas fa-receipt"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Seguimiento -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesSeguimiento"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-running"></i>
+                    <span>Seguimiento</span>
+                </a>
+
+                <div id="OpcionesSeguimiento" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/listSeguimiento.php"><i
+                                class="fas fa-running"></i>&nbsp Ver Seguimiento</a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/AddSeguimiento.php">
+                            <i class="fas fa-receipt"></i>&nbsp Agregar</a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Calendarizacion.php"><i
+                                class="fa fa-calendar"></i>&nbsp Calendarización</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Pipeline -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPipeline"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-calendar"></i>
+                    <span>Pipelines</span>
+                </a>
+
+                <div id="OpcionesPipeline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../pipelines/agregar_pipeline.html"><i
+                                class="fas fa-receipt"></i>&nbsp
+                            Agregar</a>
+                        <a class="collapse-item" href="../pipelines/buscar_pipeline.html"><i
+                                class="fa fa-search"></i>&nbsp
+                            Buscar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Visitas -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesVisita"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-house-user"></i>
+                    <span>Visitas</span>
+                </a>
+
+                <div id="OpcionesVisita" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="./buscar_visitas.html"><i class="fas fa-stream"></i>&nbsp
+                            Buscar</a>
+                        <a class="collapse-item" href="./agregar_visita.html">
+                            <i class="fas fa-plus-circle"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <p id="nombre_del_usuario"></p>
+                                <img class="img-profile rounded-circle" src="../img/Econsa.png">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a onclick="logout()" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </nav>
+                <main>
+                    <header class="page-header page-header-dark bg-gradient-danger pb-2">
+                        <div class="container">
+                            <div class="page-header-content pt-4">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-auto mt-4">
+                                        <h1 class="page-header-title">
+                                            Ingresar Pedido Unhesa
+                                        </h1>
+                                        <div class="page-header-subtitle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- Main page content-->
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row" style="width: 100%" align="center">
+                                <div class="col-lg">
+                                    <div class="p-5">
+                                        <div class="text-left">
+                                            <h1 class="h5 text-gray-900 mb-4 text-center">Por favor llene el siguiente
+                                                formulario:</h1>
+                                        </div>
+                                        <form>
+                                            <div class="col-sm-10">
+                                                <h2 class="h6 text-gray-700 mb-4" align="left">Datos del cliente:</h2>
+                                                <input type="hidden" id="idCliente" value="">
+                                                <label>Codigo:</label>
+                                                <input type="text" class="form-control form-control-user" id="codigo"
+                                                    name="codigo" value="" disabled required>
+                                                <br>
+                                                <label>Cliente:</label>
+                                                <input type="text" class="form-control form-control-user" id="cliente"
+                                                    name="cliente" value="" disabled required>
+                                                <br>
+                                                <label>Tipo de entrega:</label>
+                                                <select class="browser-default custom-select" id="idTipoEntrega"
+                                                    name="idTipoEntrega">
+                                                </select>
+                                                <br>
+                                                <br>
+                                                <input type="text" class="form-control form-control-user" id="direccion"
+                                                    name="direccion" value=""
+                                                    placeholder="Dirección de entrega del pedido" required>
+                                                <br>
+                                                <input type="number" class="form-control form-control-user"
+                                                    id="telefono" name="telefono" placeholder="Teléfono de contacto"
+                                                    required>
+                                                <br>
+                                                <label>Fecha de despacho:</label>
+                                                <input type="date" class="form-control form-control-user" id="fecha"
+                                                    name="fecha" required>
+                                                <br>
+                                                <label>Hora de entrega:</label>
+                                                <input type="time" class="form-control form-control-user" id="hora"
+                                                    name="hora" required>
+                                                <br>
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="observaciones" name="observaciones" placeholder="Observaciones">
+                                                <br>
+
+                                                <hr>
+                                                <h2 class="h6 text-gray-700 mb-4" align="left">Detalle del pedido:</h2>
+                                                <label>Codigo del producto <b>*</b></label>
+                                                <br>
+                                                <select class="idProducto browser-default custom-select" id="idProducto"
+                                                    name="idProducto"></select>
+                                                <br>
+                                                <br>
+                                                <label>Cantidad <b>*</b></label>
+                                                <input type="number" id="cantidad" min="0" value=1
+                                                    class="form-control form-control-user" name="cantidad"
+                                                    placeholder="cantidad" required>
+                                                <br>
+                                                <label>Precio <b>*</b></label>
+                                                <input type="number" id="precio" min="0" value=1
+                                                    class="form-control form-control-user" name="precio"
+                                                    placeholder="cantidad" required>
+                                                <br>
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="observacionesProducto" name="observacionesProducto"
+                                                    placeholder="Observaciones">
+                                                <br>
+                                                <button class="btn btn-warning" type="button"
+                                                    onclick="agregar_producto()">Ingresar Detalle</button>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="p-5" style="overflow-x:auto;">
+                                        <table class="table table-striped table-bordered nowrap" id="dataTable"
+                                            width="100%" align="center" cellspacing="0" data-role="datatable"
+                                            data-info="false">
+                                            <thead>
+                                                <tr>
+                                                    <th>Producto</th>
+                                                    <th>Cantidad</th>
+                                                    <th>Precio</th>
+                                                    <th>Total</th>
+                                                    <th>Observaciones</th>
+                                                    <th><i class="fas fa-trash-alt"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cuerpo_tabla_productos">
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <input type="text" class="form-control form-control-user" id="observacionesA"
+                                        name="observacionesA" placeholder="Observaciones Adicionales">
+                                    <br>
+                                    <form action="./db/servidor_pedidos.php" method="POST"
+                                        enctype="multipart/form-data">
+                                        <label for="image"><strong>Imagen</strong>
+                                            (opcional):
+                                        </label>
+                                        <div>
+                                            <div class="input-group mb-3">
+                                                <input type="file" class="form-control-file" id="image" name="image">
+                                            </div>
+                                        </div>
+                                        <button type="submit" hidden name="submit" id="submit"
+                                            class="btn btn-primary btn-block">Guardar</button>
+                                    </form>
+                                    <br>
+                                    <h3><strong id="monto_total_pedido"></strong></h3>
+                                    <br>
+                                    <input id="btn_enviar" type="button" onclick="ingresar_pedido()"
+                                        class="btn btn-primary" value="Ingresar Pedido">
+                                    <br><br><br><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Departamento de Informática 2021</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="../login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="../inventarios_php/vendor/jquery/jquery.min.js"></script>
+        <script src="../inventarios_php/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="../inventarios_php/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="../inventarios_php/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="../inventarios_php/vendor/chart.js/Chart.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Función combobox -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <link href="./js/select2.min.css" rel="stylesheet" />
+        <script src="./js/select2.min.js"></script>
+        <!-- ---------------- -->
+        <script src="./js/sweetalert.js"></script>
+        <script src="./js/ingresar_pedido_unhesa.js"></script>
+</body>
+
+</html>

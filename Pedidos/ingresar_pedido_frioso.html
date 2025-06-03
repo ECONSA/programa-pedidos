@@ -1,0 +1,753 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agregar Pedido</title>
+    <link href="../inventarios_php/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../inventarios_php/assets/img/favicon.png" />
+
+    <!-- Custom fonts for this template-->
+    <link href="../inventarios_php/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../inventarios_php/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" class="overflow-auto">
+
+        <!-- Sidebar -->
+        <ul id="accordionSidebar" class="">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+                <div class="sidebar-brand-icon ">
+                    <i class="fas fa-cocktail"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Pedidos </div>
+                <!-- titulo-->
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Inicia Menu lateral  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Control Empresarial
+            </div>
+
+            <!-- Control Empresarial -->
+
+            <!-- Nav Item - Pedidos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos</span>
+                </a>
+
+                <div id="OpcionesPedidos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Pedido_busqueda.php"> <i
+                                class="fas fa-stream"></i>&nbsp Buscar</a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/seleccionar_cliente.html"> <i
+                                class="fas fa-plus"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Recibos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesRecibos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Recibos</span>
+                </a>
+
+                <div id="OpcionesRecibos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../inventarios_php/ver_lista_recibos.html"><i
+                                class="fas fa-stream"></i>&nbsp Buscar</a>
+                        <a class="collapse-item" href="../inventarios_php/recibos.html">
+                            <i class="fas fa-receipt"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Pedidos Online -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidoOnline"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos Online</span>
+                </a>
+
+                <div id="OpcionesPedidoOnline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="./buscar_pedido_online.html"><i class="fas fa-stream"></i>&nbsp
+                            Buscar</a>
+                        <a class="collapse-item" href="./agregar_pedido_online.html">
+                            <i class="fas fa-receipt"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Seguimiento -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesSeguimiento"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-running"></i>
+                    <span>Seguimiento</span>
+                </a>
+
+                <div id="OpcionesSeguimiento" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/listSeguimiento.php"><i
+                                class="fas fa-running"></i>&nbsp Ver Seguimiento</a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/AddSeguimiento.php">
+                            <i class="fas fa-receipt"></i>&nbsp Agregar</a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Calendarizacion.php"><i
+                                class="fa fa-calendar"></i>&nbsp Calendarización</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Pipeline -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPipeline"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-calendar"></i>
+                    <span>Pipelines</span>
+                </a>
+
+                <div id="OpcionesPipeline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../pipelines/agregar_pipeline.html"><i
+                                class="fas fa-receipt"></i>&nbsp
+                            Agregar</a>
+                        <a class="collapse-item" href="../pipelines/buscar_pipeline.html"><i
+                                class="fa fa-search"></i>&nbsp
+                            Buscar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Visitas -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesVisita"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-house-user"></i>
+                    <span>Visitas</span>
+                </a>
+
+                <div id="OpcionesVisita" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="./buscar_visitas.html"><i class="fas fa-stream"></i>&nbsp
+                            Buscar</a>
+                        <a class="collapse-item" href="./agregar_visita.html">
+                            <i class="fas fa-plus-circle"></i>&nbsp Agregar</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <p id="nombre_del_usuario"></p>
+                                <img class="img-profile rounded-circle" src="../img/Econsa.png">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a onclick="logout()" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </nav>
+                <main>
+                    <header class="page-header page-header-dark bg-gradient-danger pb-2">
+                        <div class="container">
+                            <div class="page-header-content pt-4">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-auto mt-4">
+                                        <h1 class="page-header-title">
+                                            Ingresar Pedido Unhesa
+                                        </h1>
+                                        <div class="page-header-subtitle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- Main page content-->
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row" style="width: 100%" align="center">
+                                <div class="col-lg">
+                                    <div class="col-sm-10">
+                                        <div class="text-left">
+                                            <br>
+                                            <h1 class="h5 text-gray-900 mb-4 text-center">Por favor llene el siguiente
+                                                formulario:</h1>
+                                        </div>
+                                        <form>
+                                            <div class="col-sm-10">
+                                                <h2 class="h6 text-gray-700 mb-4" align="left">Datos del cliente:</h2>                                                <label>Codigo:</label>
+                                                <input type="text" class="form-control form-control-user" id="codigo"
+                                                    name="codigo" value="" disabled required>
+                                                <br>
+                                                <label>Cliente:</label>
+                                                <input type="text" class="form-control form-control-user" id="cliente"
+                                                    name="cliente" value="" disabled required>
+                                                <br>
+                                                <label>Tipo de entrega:</label>
+                                                <select class="browser-default custom-select" id="idTipoEntrega"
+                                                    name="idTipoEntrega">
+                                                </select>
+                                                <br>
+                                                <br>
+                                                <label>Dirección Entrega:</label>
+                                                <input type="text" class="form-control form-control-user" id="direccion"
+                                                    name="direccion" value=""
+                                                    placeholder="Dirección de entrega del pedido" required>
+                                                <br>
+                                                <label>Teléfono de Contacto:</label>
+                                                <input type="number" class="form-control form-control-user"
+                                                    id="telefono" name="telefono" placeholder="Teléfono de contacto"
+                                                    required>
+                                                <br>
+                                                <label>Fecha de despacho:</label>
+                                                <input type="date" class="form-control form-control-user" id="fecha"
+                                                    name="fecha" required>
+                                                <br>
+                                                <label>Hora de entrega:</label>
+                                                <input type="time" class="form-control form-control-user" id="hora"
+                                                    name="hora" required>
+                                                <br>
+                                                <label>Observaciones:</label>
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="observaciones" name="observaciones" placeholder="Observaciones">
+                                                <br>
+                                                <label>Observaciones Adicionales:</label>
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="observacionesA" name="observacionesA"
+                                                    placeholder="Observaciones Adicionales">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <br>
+                                    <div class="col-sm-10" style="overflow-x:auto;">
+                                        <br>
+                                        <table class="table table-striped table-bordered nowrap" class="display"
+                                            id="dataTable" width="100%" align="center" cellspacing="0"
+                                            data-role="datatable" data-info="false">
+                                            <tbody>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Código</th>
+                                                        <th>Nombre</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Precio.Q</th>
+                                                        <th>Total</th>
+                                                        <th>Opciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tr>
+                                                    <td id="codigo1" value="752">PTPPFR001</td>
+                                                    <td hidden><input id="codigox1" value="752"></td>
+                                                    <td id="nombreP1">Fri-Oso Fardo Uva 150 Barras.</td>
+                                                    <td><input id="cantidad1" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio1" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total1"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(1)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo2" value="738">PTPPFR002</td>
+                                                    <td hidden><input id="codigox2" value="738"></td>
+                                                    <td id="nombreP2">Fri-Oso Fardo Naranja 150 Barras</td>
+                                                    <td><input id="cantidad2" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio2" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total2"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(2)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo3" value="722">PTPPFR003</td>
+                                                    <td hidden><input id="codigox3" value="722"></td>
+                                                    <td id="nombreP3">Fri-Oso Fardo Fresa 150 Barras.</td>
+                                                    <td><input id="cantidad3" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio3" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total3"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(3)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo4" value="715">PTPPFR005</td>
+                                                    <td hidden><input id="codigox4" value="715"></td>
+                                                    <td id="nombreP4">Fri-Oso Fardo Chicle 150 Barras.</td>
+                                                    <td><input id="cantidad4" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio4" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total4"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(4)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo5" value="732">PTPPFR016</td>
+                                                    <td hidden><input id="codigox5" value="732"></td>
+                                                    <td id="nombreP5">Fri-Oso Fardo Manzana 150 Barras.</td>
+                                                    <td><input id="cantidad5" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio5" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total5"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(5)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo6" value="736">PTPPFR039</td>
+                                                    <td hidden><input id="codigox6" value="736"></td>
+                                                    <td id="nombreP6">Fri-Oso Fardo Maracuya 150 Barras.</td>
+                                                    <td><input id="cantidad6" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio6" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total6"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(6)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo7" value="710">PTPPFR041</td>
+                                                    <td hidden><input id="codigox7" value="710"></td>
+                                                    <td id="nombreP7">Fri-Oso Fardo 15 Unidades (10 barras Surtidas).</td>
+                                                    <td><input id="cantidad7" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio7" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total7"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(7)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo8" value="751">PTPPFR044</td>
+                                                    <td hidden><input id="codigox8" value="751"></td>
+                                                    <td id="nombreP8">Fri-Oso Fardo Tamarindo-Enchilado 150 Barras.</td>
+                                                    <td><input id="cantidad8" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio8" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total8"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(8)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo9" value="720">PTPPFR047</td>
+                                                    <td hidden><input id="codigox9" value="720"></td>
+                                                    <td id="nombreP9">Fri-Oso Fardo Cola 150 Barras.</td>
+                                                    <td><input id="cantidad9" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio9" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total9"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(9)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo10" value="719">PTPPFR049</td>
+                                                    <td hidden><input id="codigox10" value="719"></td>
+                                                    <td id="nombreP10">Fri-Oso Fardo Coco-Fresa 150 Barras.</td>
+                                                    <td><input id="cantidad10" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio10" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total10"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(10)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo11" value="712">PTPPFR051</td>
+                                                    <td hidden><input id="codigox11" value="712"></td>
+                                                    <td id="nombreP11">Fri-Oso Fardo 15*Tenpack Sabores-Temporada (10 barras Surtidas).</td>
+                                                    <td><input id="cantidad11" value="0" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio11" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total11"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(11)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo12" value="1495">PTPPFR087</td>
+                                                    <td hidden><input id="codigox12" value="1495"></td>
+                                                    <td id="nombreP12">Fri-Osote Bolsa Naranja Pepita (75 Barras)</td>
+                                                    <td><input id="cantidad12" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio12" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total12"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(12)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo13" value="1496">PTPPFR088</td>
+                                                    <td hidden><input id="codigox13" value="1496"></td>
+                                                    <td id="nombreP13">Fri-Osote Bolsa Mango Chamoy (75 Barras)</td>
+                                                    <td><input id="cantidad13" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio13" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total13"></td>
+
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(13)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo14" value="1497">PTPPFR089</td>
+                                                    <td hidden><input id="codigox14" value="1497"></td>
+                                                    <td id="nombreP13">Fri-Osote Bolsa Tamarindo Enchilado (75 Barras)</td>
+                                                    <td><input id="cantidad14" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio14" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total14"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(14)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo15" value="1498">PTPPFR090</td>
+                                                    <td hidden><input id="codigox15" value="1498"></td>
+                                                    <td id="nombreP15">Fri-Osote Fardo 15*5-Pack (75 Barras Surtidas)</td>
+                                                    <td><input id="cantidad15" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio15" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total15"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(15)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo16" value="1571">PTPPFR092</td>
+                                                    <td hidden><input id="codigox16" value="1571"></td>
+                                                    <td id="nombreP16">FRI-OSOTE BOLSA MANZANA (75 Barras)</td>
+                                                    <td><input id="cantidad16" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio16" type="number" min="0" value="67.50" size=10
+                                                            style="width:54px"></td>
+                                                    <td id="total16"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatos(16)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo17" value="1572">PTPPFR093</td>
+                                                    <td hidden><input id="codigox17" value="1572"></td>
+                                                    <td id="nombreP17">FRI-OSOTE BOLSA CHICLE (75 Barras)</td>
+                                                    <td><input id="cantidad17" value="0" type="number" min="0" placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio17" type="number" min="0" value="67.50" size=10 style="width:54px"></td>
+                                                    <td id="total17"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px" onclick="limpiarDatos(17)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo18" value="1574">PTPPFR094</td>
+                                                    <td hidden><input id="codigox18" value="1574"></td>
+                                                    <td id="nombreP18">FRI-OSOTE BOLSA FRESA (75 Barras)</td>
+                                                    <td><input id="cantidad18" value="0" type="number" min="0" placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio18" type="number" min="0" value="67.50" size=10 style="width:54px"></td>
+                                                    <td id="total18"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px" onclick="limpiarDatos(18)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo19" value="1577">PTPPFR095</td>
+                                                    <td hidden><input id="codigox19" value="1577"></td>
+                                                    <td id="nombreP19">Fri-Osote Bolsa Piña Pepita Enchilado (75 Barras)</td>
+                                                    <td><input id="cantidad19" value="0" type="number" min="0" placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio19" type="number" min="0" value="67.50" size=10 style="width:54px"></td>
+                                                    <td id="total19"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px" onclick="limpiarDatos(19)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo20" value="764">PTPPGE027</td>
+                                                    <td hidden><input id="codigox20" value="764"></td>
+                                                    <td id="nombreP20">Gel-Oso Fardo 15 Unidades (10 barras Surtidas) FN.</td>
+                                                    <td><input id="cantidad20" value="0" type="number" min="0" placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio20" type="number" min="0" value="67.50" size=10 style="width:54px"></td>
+                                                    <td id="total20"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px" onclick="limpiarDatos(20)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo21" value="1455">PTPPFR086</td>
+                                                    <td hidden><input id="codigox21" value="1455"></td>
+                                                    <td id="nombreP21">Fri-Oso Fardo Cremoso Surtido 75 Barras</td>
+                                                    <td><input id="cantidad21" value="0" type="number" min="0" placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio21" type="number" min="0" value="67.50" size=10 style="width:54px"></td>
+                                                    <td id="total21"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px" onclick="limpiarDatos(21)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="codigo22" value="1605">PTPPFR096</td>
+                                                    <td hidden><input id="codigox22" value="1605"></td>
+                                                    <td id="nombreP22">Fri-Oso Fardo Cremoso Surtido 150 Barras</td>
+                                                    <td><input id="cantidad22" value="0" type="number" min="0" placeholder="0" size=10 style="width:55px"></td>
+                                                    <td><input id="precio22" type="number" min="0" value="67.50" size=10 style="width:54px"></td>
+                                                    <td id="total22"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px" onclick="limpiarDatos(22)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <form name="datos" method="post" action="AddPedidoPlantilla.php"
+                                                            onsubmit="return verifica_codigo(this);">
+                                                            <select value="0" id="casilla1" onchange="setearDatos(1,25)"
+                                                                class="idCliente browser-default custom-select"
+                                                                style="width: 100px;" name="idCliente"></select>
+                                                        </form>
+                                                    </td>
+                                                    <td id="nombre1"></td>
+                                                    <td><input id="cantidad25" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px" disabled></td>
+                                                    <td><input id="precio25" type="number" min="0" value="0" size=10
+                                                            style="width:54px" disabled></td>
+                                                    <td id="total25"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatosCombobox(1,25)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <form name="datos" method="post" action="AddPedidoPlantilla.php"
+                                                            onsubmit="return verifica_codigo(this);">
+                                                            <select value="0" id="casilla2" onchange="setearDatos(2,26)"
+                                                                class="idCliente browser-default custom-select"
+                                                                style="width: 100px;" name="idCliente"></select>
+                                                        </form>
+                                                    </td>
+                                                    <td id="nombre2"></td>
+                                                    <td><input id="cantidad26" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px" disabled></td>
+                                                    <td><input id="precio26" type="number" min="0" value="0" size=10
+                                                            style="width:54px" disabled></td>
+                                                    <td id="total26"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatosCombobox(2,26)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <form name="datos" method="post" action="AddPedidoPlantilla.php"
+                                                            onsubmit="return verifica_codigo(this);">
+                                                            <select value="0" id="casilla3" onchange="setearDatos(3,27)"
+                                                                class="idCliente browser-default custom-select"
+                                                                style="width: 100px;" name="idCliente"></select>
+                                                        </form>
+                                                    </td>
+                                                    <td id="nombre3"></td>
+                                                    <td><input id="cantidad27" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px" disabled></td>
+                                                    <td><input id="precio27" type="number" min="0" value="0" size=10
+                                                            style="width:54px" disabled></td>
+                                                    <td id="total27"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatosCombobox(3,27)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <form name="datos" method="post" action="AddPedidoPlantilla.php"
+                                                            onsubmit="return verifica_codigo(this);">
+                                                            <select value="0" id="casilla4" onchange="setearDatos(4,28)"
+                                                                class="idCliente browser-default custom-select"
+                                                                style="width: 100px;" name="idCliente"></select>
+                                                        </form>
+                                                    </td>
+                                                    <td id="nombre4"></td>
+                                                    <td><input id="cantidad28" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px" disabled></td>
+                                                    <td><input id="precio28" type="number" min="0" value="0" size=10
+                                                            style="width:54px" disabled></td>
+                                                    <td id="total28"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatosCombobox(4,28)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <form name="datos" method="post" action="AddPedidoPlantilla.php"
+                                                            onsubmit="return verifica_codigo(this);">
+                                                            <select value="0" onchange="setearDatos(5,29)" id="casilla5"
+                                                                class="idCliente browser-default custom-select"
+                                                                style="width: 100px;" name="idCliente"></select>
+                                                        </form>
+                                                    </td>
+                                                    <td id="nombre5"></td>
+                                                    <td><input id="cantidad29" value="0" type="number" min="0"
+                                                            placeholder="0" size=10 style="width:55px" disabled></td>
+                                                    <td><input id="precio29" type="number" min="0" value="0" size=10
+                                                            style="width:54px" disabled></td>
+                                                    <td id="total29"></td>
+                                                    <td><i class="fas fa-trash-alt" style="margin-left: 25px"
+                                                            onclick="limpiarDatosCombobox(5,29)"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <br>
+                                    <div class="col-sm-10" style="overflow-x:auto;">
+                                        <table class="table table-striped table-bordered nowrap" id="dataTable"
+                                            width="100%" align="center" cellspacing="0" data-role="datatable"
+                                            data-info="false">
+                                            <thead>
+                                                <tr>
+                                                    <th>Productos Pedidos</th>
+                                                    <th>Total General</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td id="cantidad"></td>
+                                                    <td id="total"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <button type="button" class="btn btn-success"
+                                            onclick="calcularTotales()">Calcular Total</button>
+                                        <br><br>
+                                        <button id="enviar" type="button" class="btn btn-primary"
+                                            onclick="agregarPedido()" disabled>Enviar Pedido</button>
+                                    </div>
+                                    <br><br><br><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Departamento de Informática 2021</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="../login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="../inventarios_php/vendor/jquery/jquery.min.js"></script>
+        <script src="../inventarios_php/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="../inventarios_php/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="../inventarios_php/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="../inventarios_php/vendor/chart.js/Chart.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Función combobox -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <link href="./js/select2.min.css" rel="stylesheet" />
+        <script src="./js/select2.min.js"></script>
+        <!-- ---------------- -->
+        <script src="./js/sweetalert.js"></script>
+        <script src="./js/ingresar_pedido_frioso.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pedidos</title>
+
+    <!-- CSS principal -->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- DataTables (Bootstrap 4) CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+
+    <!-- Íconos Feather (opcional) -->
+    <script data-search-pseudo-elements defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- ========== MENÚ LATERAL ========== -->
+        <ul id="accordionSidebar" class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion toggled">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+                <div class="sidebar-brand-icon">
+                    <i class="fas fa-cocktail"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Pedidos</div>
+            </a>
+
+            <hr class="sidebar-divider my-0">
+
+            <!-- Menú: Inicio -->
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">Control Empresarial</div>
+
+            <!-- Nav Item - Pedidos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos</span>
+                </a>
+                <div id="OpcionesPedidos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Pedido_busqueda.php">
+                            <i class="fas fa-stream"></i>&nbsp; Buscar
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/seleccionar_cliente.html">
+                            <i class="fas fa-plus"></i>&nbsp; Agregar
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/seleccionar_cliente_frioso.html">
+                            <i class="fas fa-plus"></i>&nbsp; Plantilla Friosos
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Recibos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesRecibos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Recibos</span>
+                </a>
+                <div id="OpcionesRecibos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../inventarios_php/ver_lista_recibos.html">
+                            <i class="fas fa-stream"></i>&nbsp; Buscar
+                        </a>
+                        <a class="collapse-item" href="../inventarios_php/recibos.html">
+                            <i class="fas fa-receipt"></i>&nbsp; Agregar
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pedidos Online -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidoOnline"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos Online</span>
+                </a>
+                <div id="OpcionesPedidoOnline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="./buscar_pedido_online.html">
+                            <i class="fas fa-stream"></i>&nbsp; Buscar
+                        </a>
+                        <a class="collapse-item" href="./agregar_pedido_online.html">
+                            <i class="fas fa-receipt"></i>&nbsp; Agregar
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Seguimiento -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesSeguimiento"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-running"></i>
+                    <span>Seguimiento</span>
+                </a>
+                <div id="OpcionesSeguimiento" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/listSeguimiento.php">
+                            <i class="fas fa-running"></i>&nbsp; Ver Seguimiento
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/AddSeguimiento.php">
+                            <i class="fas fa-receipt"></i>&nbsp; Agregar
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Calendarizacion.php">
+                            <i class="fa fa-calendar"></i>&nbsp; Calendarización
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pipelines -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPipeline"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-calendar"></i>
+                    <span>Pipelines</span>
+                </a>
+                <div id="OpcionesPipeline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../pipelines/agregar_pipeline.html">
+                            <i class="fas fa-receipt"></i>&nbsp; Agregar
+                        </a>
+                        <a class="collapse-item" href="../pipelines/buscar_pipeline.html">
+                            <i class="fa fa-search"></i>&nbsp; Buscar
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <p id="nombre_del_usuario"></p>
+                                <img class="img-profile rounded-circle" src="../img/Econsa.png">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a onclick="logout()" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Fin Topbar -->
+
+                <!-- Encabezado principal -->
+                <header class="page-header page-header-dark bg-gradient-danger pb-10">
+                    <div class="container">
+                        <div class="page-header-content pt-4">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-auto mt-4">
+                                    <h1 class="page-header-title">
+                                        <div class="page-header-icon"><i data-feather="filter"></i></div>
+                                        Lista de Pedidos Online
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Contenido principal -->
+                <div class="container mt-n10">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Pedidos</h5>
+                            <button class="btn btn-success btn-sm d-flex align-items-center px-3" style="gap: 0.5rem;"
+                                onclick="exportDataTableToExcel()">
+                                <i class="fas fa-file-excel"></i>
+                                <span>Exportar Excel</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="datatable">
+                                <table class="table table-bordered table-responsive table-hover" id="dataTable"
+                                    width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Pedido</th>
+                                            <th>Nombre</th>
+                                            <th>Dirección</th>
+                                            <th>Departamento</th>
+                                            <th>Municipio</th>
+                                            <th>Teléfono</th>
+                                            <th>Nombre Factura</th>
+                                            <th>NIT</th>
+                                            <th>Sticker</th>
+                                            <th>Servicio</th>
+                                            <th>Fecha Generado</th>
+                                            <th>Fecha Entrega</th>
+                                            <th>Cliente SAP</th>
+                                            <th>Estado</th>
+                                            <th>Fidelización</th>
+                                            <th>Tipo de cliente</th>
+                                            <th>¿Cómo se enteró?</th>
+                                            <th>Código del Producto</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Total</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID Pedido</th>
+                                            <th>Nombre</th>
+                                            <th>Dirección</th>
+                                            <th>Departamento</th>
+                                            <th>Municipio</th>
+                                            <th>Teléfono</th>
+                                            <th>Nombre Factura</th>
+                                            <th>NIT</th>
+                                            <th>Sticker</th>
+                                            <th>Servicio</th>
+                                            <th>Fecha Generado</th>
+                                            <th>Fecha Entrega</th>
+                                            <th>Cliente SAP</th>
+                                            <th>Estado</th>
+                                            <th>Fidelización</th>
+                                            <th>Tipo de cliente</th>
+                                            <th>¿Cómo se enteró?</th>
+                                            <th>Código del Producto</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Total</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="tabla">
+                                        <!-- Se llena dinámicamente con lista_pedidos_online.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Contenido principal -->
+            </div>
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Departamento de Informática 2025</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- Fin Content Wrapper -->
+    </div>
+    <!-- Fin Page Wrapper -->
+
+    <!-- Modal para ver “Código del Producto” completo -->
+    <div class="modal fade" id="verMasModal" tabindex="-1" role="dialog" aria-labelledby="verMasModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="verMasModalLabel">Código del Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="verMasModalBody" style="white-space: pre-wrap;">
+                    <!-- Texto con viñetas -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== Scripts al final ====== -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <!-- SB Admin 2 (opcional) -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="./js/sweetalert.js"></script>
+
+    <!-- Nuestro JS principal (lista_pedidos_online.js) -->
+    <script src="./js/lista_pedidos_online.js"></script>
+</body>
+
+</html>

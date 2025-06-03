@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Para que sea responsive en móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pedido Online</title>
+
+    <!-- ========================= CSS principales ========================= -->
+    <!-- FontAwesome, Google Fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,
+            300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- SB Admin 2 (CSS principal) -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- DataTables con Bootstrap 4 (CSS), si lo necesitas -->
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Select2 (CSS) -->
+    <link href="./js/select2.min.css" rel="stylesheet" />
+
+    <!-- jQuery (requerido por Bootstrap y DataTables) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="./js/select2.min.js"></script>
+
+
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- =========== MENÚ LATERAL (sidebar) =========== -->
+        <ul id="accordionSidebar" class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion toggled">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+                <div class="sidebar-brand-icon">
+                    <i class="fas fa-cocktail"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Pedidos</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <!-- Menú: Inicio -->
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">Control Empresarial</div>
+
+            <!-- Pedidos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidos"
+                    aria-expanded="true" aria-controls="OpcionesPedidos">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos</span>
+                </a>
+                <div id="OpcionesPedidos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Pedido_busqueda.php">
+                            <i class="fas fa-stream"></i> Buscar
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/seleccionar_cliente.html">
+                            <i class="fas fa-plus"></i> Agregar
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/seleccionar_cliente_frioso.html">
+                            <i class="fas fa-plus"></i> Plantilla Friosos
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Recibos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesRecibos"
+                    aria-expanded="true" aria-controls="OpcionesRecibos">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Recibos</span>
+                </a>
+                <div id="OpcionesRecibos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../inventarios_php/ver_lista_recibos.html">
+                            <i class="fas fa-stream"></i> Buscar
+                        </a>
+                        <a class="collapse-item" href="../inventarios_php/recibos.html">
+                            <i class="fas fa-receipt"></i> Agregar
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Pedidos Online -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPedidoOnline"
+                    aria-expanded="true" aria-controls="OpcionesPedidoOnline">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Pedidos Online</span>
+                </a>
+                <div id="OpcionesPedidoOnline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="./buscar_pedido_online.html">
+                            <i class="fas fa-stream"></i> Buscar
+                        </a>
+                        <a class="collapse-item" href="./agregar_pedido_online.html">
+                            <i class="fas fa-receipt"></i> Agregar
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Seguimiento -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesSeguimiento"
+                    aria-expanded="true" aria-controls="OpcionesSeguimiento">
+                    <i class="fas fa-running"></i>
+                    <span>Seguimiento</span>
+                </a>
+                <div id="OpcionesSeguimiento" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/listSeguimiento.php">
+                            <i class="fas fa-running"></i> Ver Seguimiento
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/AddSeguimiento.php">
+                            <i class="fas fa-receipt"></i> Agregar
+                        </a>
+                        <a class="collapse-item" href="/programa_pedidos/Pedidos/Calendarizacion.php">
+                            <i class="fa fa-calendar"></i> Calendarización
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Pipelines -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OpcionesPipeline"
+                    aria-expanded="true" aria-controls="OpcionesPipeline">
+                    <i class="fas fa-calendar"></i>
+                    <span>Pipelines</span>
+                </a>
+                <div id="OpcionesPipeline" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones:</h6>
+                        <a class="collapse-item" href="../pipelines/agregar_pipeline.html">
+                            <i class="fas fa-receipt"></i> Agregar
+                        </a>
+                        <a class="collapse-item" href="../pipelines/buscar_pipeline.html">
+                            <i class="fa fa-search"></i> Buscar
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <p id="nombre_del_usuario"></p>
+                                <img class="img-profile rounded-circle" src="../img/Econsa.png">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a onclick="logout()" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End of Topbar -->
+
+                <header class="page-header page-header-dark bg-gradient-danger" style="margin: 0; padding: 0;">
+                    <div class="container-fluid d-flex align-items-center justify-content-center" style="height: 70px;">
+                        <h1 class="page-header-title m-0" style="color:#fff;">Pedido Online</h1>
+                    </div>
+                </header>
+
+                <style>
+                    .navbar {
+                        margin-bottom: 0 !important;
+                        padding-bottom: 0 !important;
+                        border-bottom: none !important;
+                    }
+                </style>
+
+
+                <!-- Contenido principal -->
+                <div class="container-fluid mt-n10"><!-- para que sea amplio -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Datos del Pedido</h5>
+                        </div>
+                        <div class="card-body">
+
+                            <!-- Nombre del cliente -->
+                            <div class="form-group">
+                                <label><strong>Nombre del cliente</strong></label>
+                                <input type="text" class="form-control" id="browser" list="browsers"
+                                    placeholder="Cliente..." onblur="busqueda()">
+                                <datalist id="browsers"></datalist>
+                                <input type="hidden" id="id_cliente_online">
+                            </div>
+
+                            <!-- Dirección + Departamento + Municipio -->
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label><strong>Dirección</strong></label>
+                                    <input type="text" class="form-control" id="direccion" placeholder="Dirección">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label><strong>Departamento</strong></label>
+                                    <select class="form-control" id="departamento"></select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label><strong>Municipio</strong></label>
+                                    <select class="form-control" id="municipio"></select>
+                                </div>
+                            </div>
+
+                            <!-- Teléfonos -->
+                            <div class="form-group">
+                                <label><strong>Teléfono</strong></label>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <small>Teléfono #1</small>
+                                        <input type="text" class="form-control" id="telefono1"
+                                            placeholder="Teléfono #1">
+                                    </div>
+                                    <div class="col">
+                                        <small>Teléfono #2 (opcional)</small>
+                                        <input type="text" class="form-control" id="telefono2"
+                                            placeholder="Teléfono #2 (opcional)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fidelización, Nombre factura, NIT -->
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label><strong>Fidelización</strong></label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="fidelizacion"
+                                                id="radioFidelizado" value="Fidelizado">
+                                            <label class="form-check-label" for="radioFidelizado">Fidelizado</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="fidelizacion"
+                                                id="radioNoFidelizado" value="NoFidelizado">
+                                            <label class="form-check-label" for="radioNoFidelizado">No
+                                                Fidelizado</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label><strong>Nombre de factura</strong></label>
+                                    <input type="text" class="form-control" id="nombre_factura"
+                                        placeholder="Nombre Factura">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label><strong>NIT</strong></label>
+                                    <input type="text" class="form-control" id="nit" placeholder="NIT">
+                                </div>
+                            </div>
+
+                            <!-- Tipo de cliente (checkboxes) -->
+                            <div class="form-group">
+                                <label><strong>Tipo de cliente</strong></label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkCasa" value="Desde casa">
+                                    <label class="form-check-label" for="checkCasa">Desde casa</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkEscuelas"
+                                        value="En Escuelas">
+                                    <label class="form-check-label" for="checkEscuelas">En Escuelas</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkCalle"
+                                        value="Venta en la calle">
+                                    <label class="form-check-label" for="checkCalle">Venta en la calle</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkTienda" value="Tienda">
+                                    <label class="form-check-label" for="checkTienda">Tienda</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkOtras" value="Otras">
+                                    <label class="form-check-label" for="checkOtras">Otras</label>
+                                    <input type="text" class="form-control ml-2" style="max-width:150px;"
+                                        placeholder="Especifique" id="txtTipoClienteOtras">
+                                </div>
+                            </div>
+
+                            <!-- Stickers + Servicio -->
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label><strong>Stickers</strong></label>
+                                    <input type="text" class="form-control" id="sticker" placeholder="Stickers">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label><strong>Servicio</strong></label>
+                                    <select class="form-control" id="servicio">
+                                        <option value="0" selected>Elija un servicio</option>
+                                        <option value="Servicio Estándar">Servicio Estándar</option>
+                                        <option value="Servicio de Cobro">Servicio de Cobro</option>
+                                        <option value="Pingüe">Pingüe</option>
+                                        <option value="Oficina">Oficina</option>
+                                        <option value="Mensajero">Mensajero</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Observaciones + Fecha Entrega -->
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label><strong>Observaciones</strong></label>
+                                    <input type="text" class="form-control" id="observacion"
+                                        placeholder="Observaciones (opcional)">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label><strong>Fecha de entrega</strong></label>
+                                    <input type="date" class="form-control" id="fecha_entrega">
+                                </div>
+                            </div>
+
+                            <!-- Tabla de productos (21 + 5 en blanco) -->
+                            <h5 class="mt-3">Productos</h5>
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th style="width:45%">Código del Producto</th>
+                                        <th style="width:25%">Precio</th>
+                                        <th style="width:25%">Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto1" value="710"></td>
+                                        <td>PTPPFR041-Fri-Oso Fardo 15 Unidades (10 barras Surtidas)</td>
+                                        <td><input type="number" class="form-control" id="precio1" value="105"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad1" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto2" value="1214"></td>
+                                        <td>PTPPGE038-VITAMINA C GEL-OSO 500 MG. 300 Barras.</td>
+                                        <td><input type="number" class="form-control" id="precio2" value="270"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad2" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto3" value="796"></td>
+                                        <td>PTPPGE039-GEL-OSO Znc+C+D Fardo 270 Barras.</td>
+                                        <td><input type="number" class="form-control" id="precio3" value="410"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad3" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto4" value="828"></td>
+                                        <td>PTPPHX001-Hidroxon Fardo Uva 50 Uni.</td>
+                                        <td><input type="number" class="form-control" id="precio4" value="80"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad4" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto5" value="822"></td>
+                                        <td>PTPPHX002-Hidroxon Fardo Fresa 50 Uni</td>
+                                        <td><input type="number" class="form-control" id="precio5" value="80"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad5" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto6" value="825"></td>
+                                        <td>PTPPHX003-Hidroxon Fardo Naranja 50 Uni.</td>
+                                        <td><input type="number" class="form-control" id="precio6" value="80"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad6" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto7" value="826"></td>
+                                        <td>PTPPHX004-Hidroxon Fardo Piña 50 Uni.</td>
+                                        <td><input type="number" class="form-control" id="precio7" value="80"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" id="cantidad7" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto8" value="562"></td>
+                                        <td>PTPPDBPQ002-Del Bueno Panqueques 24*450gr.</td>
+                                        <td><input type="number" class="form-control" id="precio8" value="288"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad8" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto9" value="797"></td>
+                                        <td>PTPPGE040-GEL-OSO Znc+C+D Fardo 400 Barras.</td>
+                                        <td><input type="number" class="form-control" id="precio9" value="300"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad9" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto10" value="1215"></td>
+                                        <td>PTPPGE037-VITAMINA C GEL-OSO 500 MG. 400 Barras.</td>
+                                        <td><input type="number" class="form-control" id="precio10" value="200"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad10" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto16" value="1341"></td>
+                                        <td>PTPPGE053-VITAMINA C DISPLAY GEL-OSO 500 MG. 50 Barras.</td>
+                                        <td><input type="number" class="form-control" id="precio16" value="65"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad16" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto17" value="1342"></td>
+                                        <td>PTPPGE054-GEL-OSO Znc+C+D DISPLAY 30 Barras.</td>
+                                        <td><input type="number" class="form-control" id="precio17" value="65"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad17" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto18" value="1340"></td>
+                                        <td>PTPPFR077-Fri-Oso Display Hexagonal 18 barras surtidas.</td>
+                                        <td><input type="number" class="form-control" id="precio18" value="50"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad18" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto19" value="764"></td>
+                                        <td>PTPPGE027-Gel-Oso Fardo 15 Unidades (10 barras Surtidas) FN.</td>
+                                        <td><input type="number" class="form-control" id="precio19" value="105"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad19" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto20" value="712"></td>
+                                        <td>PTPPFR051-Fri-Oso Fardo 15*Tenpack Sabores-Temporada (10 barras Surtidas).
+                                        </td>
+                                        <td><input type="number" class="form-control" id="precio20" value="105"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad20" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td hidden><input type="text" id="idProducto21" value="1372"></td>
+                                        <td>PTPPFR080-Fri-Oso Fardo Cremoso Chocolate 150 barras.</td>
+                                        <td><input type="number" class="form-control" id="precio21" value="225"
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                        <td><input type="number" class="form-control" id="cantidad21" value=""
+                                                onchange="calcular_total_pedido()" min="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control productoSelect" id="idProducto22">
+                                                <option value="">Código del Producto</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" class="form-control" id="precio22" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                        <td><input type="number" class="form-control" id="cantidad22" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control productoSelect" id="idProducto23">
+                                                <option value="">Código del Producto</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" class="form-control" id="precio23" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                        <td><input type="number" class="form-control" id="cantidad23" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control productoSelect" id="idProducto24">
+                                                <option value="">Código del Producto</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" class="form-control" id="precio24" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                        <td><input type="number" class="form-control" id="cantidad24" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control productoSelect" id="idProducto25">
+                                                <option value="">Código del Producto</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" class="form-control" id="precio25" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                        <td><input type="number" class="form-control" id="cantidad25" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select class="form-control productoSelect" id="idProducto26">
+                                                <option value="">Código del Producto</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" class="form-control" id="precio26" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                        <td><input type="number" class="form-control" id="cantidad26" value="0"
+                                                onchange="calcular_total_pedido()" min="0"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h4><strong id="monto_total_pedido">Monto Total Del Pedido: Q. 0.00</strong></h4>
+
+                            <!-- ¿Cómo se enteró? -->
+                            <div class="text-center">
+                                <h5 class="mt-4">¿Cómo se enteró de nosotros?</h5>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkRedes"
+                                        value="Redes Sociales">
+                                    <label class="form-check-label" for="checkRedes">Redes Sociales</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkPublicidad"
+                                        value="Publicidad en calle">
+                                    <label class="form-check-label" for="checkPublicidad">Publicidad en calle</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkReferido"
+                                        value="Referido por alguien">
+                                    <label class="form-check-label" for="checkReferido">Referido por alguien</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="checkOtras2" value="Otras">
+                                    <label class="form-check-label" for="checkOtras2">Otras</label>
+                                    <input type="text" class="form-control ml-2" style="max-width:150px;"
+                                        placeholder="Especifique" id="txtComoSeEnteroOtras">
+                                </div>
+                            </div>
+
+
+                            <!-- Botón Guardar -->
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary btn-lg px-4" onclick="guardar()">
+                                    Guardar
+                                </button>
+                            </div>
+
+                        </div><!-- card-body -->
+                    </div><!-- card -->
+                </div>
+                <!-- Fin Contenido principal -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Departamento de Informática 2025</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Modal Logout (opcional) -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal"
+                        aria-label="Close"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================ -->
+    <!--       SCRIPTS AL FINAL          -->
+    <!-- ================================ -->
+    <!-- Bootstrap Bundle (usa jQuery) -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables (opcional) -->
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <!-- SweetAlert (opcional) -->
+    <script src="./js/sweetalert.js"></script>
+    <!-- SB Admin 2 JS (usa jQuery Easing) -->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Tu script personalizado (pedido_online_2.js) -->
+    <script src="./js/pedido_online_2.js"></script>
+
+    <script>
+        // Inicializamos select2 en DEPARTAMENTO, MUNICIPIO y en las filas con .productoSelect
+        $(document).ready(function () {
+            // Depto
+            $('#departamento').select2({
+                placeholder: 'Departamento',
+                ajax: {
+                    url: './bd/listado_departamentos.php',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return { results: data };
+                    },
+                    cache: true
+                }
+            });
+            // Municipio
+            $('#municipio').select2({
+                placeholder: 'Municipio',
+                ajax: {
+                    url: './bd/listado_municipios.php',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return { results: data };
+                    },
+                    cache: true
+                }
+            });
+            // Producto en filas 22..26
+            $('.productoSelect').select2({
+                placeholder: 'Codigo del Producto',
+                ajax: {
+                    url: './bd/codigo_producto.php',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return { results: data };
+                    },
+                    cache: true
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
